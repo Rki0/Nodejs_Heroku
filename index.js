@@ -6,7 +6,9 @@ const port = process.env.PORT || 8000;
 
 const cors = require("cors");
 
-app.use(cors());
+app.use(
+  cors({ credentials: true, origin: "https://rootingforyou.herokuapp.com" })
+);
 
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
