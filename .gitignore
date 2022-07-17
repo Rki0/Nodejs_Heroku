@@ -1,0 +1,4 @@
+node_modules
+
+# 이미 올린 이후에 gitignore를 하면 의미가 없음.
+dev.js
