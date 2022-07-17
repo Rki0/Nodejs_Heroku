@@ -6,14 +6,7 @@ const port = process.env.PORT || 8000;
 
 const cors = require("cors");
 
-// app.use(cors());
-
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
@@ -88,7 +81,11 @@ app.post("/api/users/login", (req, res) => {
         if (err) return res.status(400).send(err);
 
         res
-          .cookie("x_auth", user.token)
+          .cookie("x_auth", user.token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+          })
           .status(200)
           .json({ loginSuccess: true, userId: user._id });
       });
