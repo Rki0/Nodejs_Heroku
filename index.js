@@ -4,6 +4,10 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
+const cors = require("cors");
+
+app.use(cors());
+
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
   // res.send(
@@ -24,7 +28,6 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(config.mongoURI)
-  // .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("Error", err));
 ////////////////
