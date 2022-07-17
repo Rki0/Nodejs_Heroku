@@ -6,7 +6,9 @@ const port = process.env.PORT || 8000;
 
 const cors = require("cors");
 
-app.use(cors({ origin: "*", credential: true }));
+app.use(
+  cors({ origin: "https://rootingforyou.netlify.app", credentials: true })
+);
 
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
