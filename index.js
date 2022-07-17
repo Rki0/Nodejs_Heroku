@@ -20,8 +20,7 @@ const config = require("./config/key");
 const mongoose = require("mongoose");
 
 mongoose
-  // .connect(config.mongoURI)
-  .connect("rootingforyou-shard-00-02.wdalc.mongodb.net:27017")
+  .connect(config.mongoURI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("Error", err));
 ////////////////
