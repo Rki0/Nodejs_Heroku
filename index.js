@@ -4,12 +4,14 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
-// app.get("/", (req, res) => {
-//   // res.send("Hello World!~~안녕하세요~~Heroku");
-//   res.send(
-//     `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}`
-//   );
-// });
+const test = "test";
+
+app.get("/", (req, res) => {
+  // res.send("Hello World!~~안녕하세요~~Heroku");
+  res.send(
+    `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}~${test}`
+  );
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
@@ -23,8 +25,8 @@ const config = require("./config/key");
 const mongoose = require("mongoose");
 
 mongoose
-  // .connect(config.mongoURI)
-  .connect(process.env.MONGO_URI)
+  .connect(config.mongoURI)
+  // .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("Error", err));
 ////////////////
