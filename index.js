@@ -19,18 +19,12 @@ app.listen(port, () => {
 const config = require("./config/key");
 ////////////////
 
-app.get("/", (req, res) => {
-  // res.send("Hello World!~~안녕하세요~~Heroku");
-  res.send(
-    `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${config}`
-  );
-});
-
 //////// mongoose로 내 애플리케이션과 연결하기 ////////
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(config.mongoURI)
+  // .connect(config.mongoURI)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("Error", err));
 ////////////////
