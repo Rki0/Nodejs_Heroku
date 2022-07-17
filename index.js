@@ -4,12 +4,12 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
-app.get("/", (req, res) => {
-  // res.send("Hello World!~~안녕하세요~~Heroku");
-  res.send(
-    `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}`
-  );
-});
+// app.get("/", (req, res) => {
+//   // res.send("Hello World!~~안녕하세요~~Heroku");
+//   res.send(
+//     `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}`
+//   );
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
@@ -18,6 +18,13 @@ app.listen(port, () => {
 //////// mongoDB URI값 가져오기 ////////
 const config = require("./config/key");
 ////////////////
+
+app.get("/", (req, res) => {
+  // res.send("Hello World!~~안녕하세요~~Heroku");
+  res.send(
+    `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${config}`
+  );
+});
 
 //////// mongoose로 내 애플리케이션과 연결하기 ////////
 const mongoose = require("mongoose");
