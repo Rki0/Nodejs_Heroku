@@ -6,7 +6,9 @@ const port = process.env.PORT || 8000;
 
 app.get("/", (req, res) => {
   // res.send("Hello World!~~안녕하세요~~Heroku");
-  res.send(`Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}`);
+  res.send(
+    `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}`
+  );
 });
 
 app.listen(port, () => {
