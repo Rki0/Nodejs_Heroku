@@ -66,11 +66,15 @@ userSchema.methods.comparePassword = function (plainPassword, callback) {
 
 //////// generateToken ////////
 const jwt = require("jsonwebtoken");
+const moment = require("moment");
 
 userSchema.methods.generateToken = function (callback) {
   let user = this;
 
   let token = jwt.sign(user._id.toHexString(), "secretToken");
+
+  let oneHour = moment().add(1, "hour").valueOf();
+  user.tokenExp = oneHour;
 
   user.token = token;
   user.save(function (err, user) {
