@@ -16,9 +16,6 @@ app.use(
 
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
-  // res.send(
-  //   `Hello World!~~안녕하세요~~Heroku~${process.env.NODE_ENV}~${process.env.MONGO_URI}~`
-  // );
 });
 
 app.listen(port, () => {
