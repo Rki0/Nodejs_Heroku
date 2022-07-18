@@ -7,12 +7,12 @@ const port = process.env.PORT || 8000;
 const cors = require("cors");
 
 // dev
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // prod
-// app.use(
-//   cors({ origin: "https://rootingforyou.netlify.app", credentials: true })
-// );
+app.use(
+  cors({ origin: "https://rootingforyou.netlify.app", credentials: true })
+);
 
 app.get("/", (req, res) => {
   res.send(`Hello World!~~안녕하세요~~Heroku~${port}`);
@@ -87,7 +87,11 @@ app.post("/api/users/login", (req, res) => {
         if (err) return res.status(400).send(err);
 
         res
-          .cookie("x_auth", user.token)
+          .cookie("x_auth", user.token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+          })
           .status(200)
           .json({ loginSuccess: true, userId: user._id });
       });
