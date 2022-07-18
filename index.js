@@ -7,7 +7,7 @@ const port = process.env.PORT || 8000;
 const cors = require("cors");
 
 // dev
-app.use(cors(cors({ origin: "http://localhost:3000", credentials: true })));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // prod
 // app.use(
