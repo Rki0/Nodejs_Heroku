@@ -6,6 +6,10 @@ const port = process.env.PORT || 8000;
 
 const cors = require("cors");
 
+// dev
+// app.use(cors());
+
+// prod
 app.use(
   cors({ origin: "https://rootingforyou.netlify.app", credentials: true })
 );
@@ -81,12 +85,6 @@ app.post("/api/users/login", (req, res) => {
 
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-
-        res.cookie("x_authExp", user.tokenExp, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "none",
-        });
 
         res
           .cookie("x_auth", user.token)
