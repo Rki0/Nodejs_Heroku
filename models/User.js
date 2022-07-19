@@ -89,8 +89,6 @@ userSchema.statics.findByToken = function (token, callback) {
     user.findOne({ _id: decoded, token: token }, function (err, user) {
       if (err) return callback(err);
 
-      console.log("User.js", user);
-
       callback(null, user);
     });
   });
