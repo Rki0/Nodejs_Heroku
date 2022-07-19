@@ -6,26 +6,6 @@ const port = process.env.PORT || 8000;
 
 const cors = require("cors");
 
-////////////// cookie 관련 이슈 해결을 위한 실험. 다시 잘 안되면 여기만 지우면 됨
-const session = require("express-session");
-
-app.use(
-  session({
-    httpOnly: true,
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    },
-  })
-);
-
-app.set("trust proxy", 1);
-//////////////
-
 // dev
 // app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
